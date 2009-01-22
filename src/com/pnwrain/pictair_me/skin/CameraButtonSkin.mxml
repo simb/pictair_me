@@ -18,7 +18,7 @@
 	
 		<fx:Ellipse top="0" bottom="0" left="0" right="0">
 			<fx:fill>
-				<fx:SolidColor color="0x626382"/>
+				<fx:SolidColor color="0x626382" color.up="0x181da0" id="elipseBack"/>
 			</fx:fill>
 			<fx:stroke>
 				<fx:SolidColorStroke color="0x2b303d" weight="2"/>
