@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" title="{this.width}:{this.height}"
+<mx:WindowedApplication xmlns:mx="http://ns.adobe.com/mxml/2009" xmlns:view="com.pnwrain.pictair_me.view.*"
+	title="{this.width}:{this.height}"
 	layout="absolute"
 	width="640"
-	height="600"
+	height="700"
 	horizontalScrollPolicy="off"
 	verticalScrollPolicy="off"
-	creationComplete="onCreationComplete()" xmlns:view="com.pnwrain.view.*">
+	creationComplete="onCreationComplete()" >
 	
 	<mx:Script>
 		<![CDATA[
@@ -20,6 +21,8 @@
 	<view:VideoDisplay id="vd" width="640" height="480" />
 	
 	<mx:ApplicationControlBar top="480" width="100%" dock="false" >
-		<mx:Button label="text" />
+		<mx:Spacer width="100%" />
+			<mx:FxButton label="text" skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin" height="50" width="50" />
+		<mx:Spacer width="100%" />
 	</mx:ApplicationControlBar>
 </mx:WindowedApplication>

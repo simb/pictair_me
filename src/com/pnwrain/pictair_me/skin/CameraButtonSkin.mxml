@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fx:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	  minWidth="21" minHeight="21"
+	  alpha.disabled="0.5">
+
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("mx.components.FxButton")]
+	</fx:Metadata>
+    
+	<!-- states -->
+	<fx:states>
+		<fx:State name="up" />
+		<fx:State name="over" />
+		<fx:State name="down" />
+		<fx:State name="disabled" />
+	</fx:states>
+	
+		<fx:Ellipse top="0" bottom="0" left="0" right="0">
+			<fx:fill>
+				<fx:SolidColor color="0x626382"/>
+			</fx:fill>
+			<fx:stroke>
+				<fx:SolidColorStroke color="0x2b303d" weight="2"/>
+			</fx:stroke>
+		</fx:Ellipse>
+		<fx:Rect height="11" width="13" radiusX="10" radiusY="10" horizontalCenter="0" verticalCenter="-10">
+			<fx:fill>
+				<fx:SolidColor color="0xFFFFFF"/>
+			</fx:fill>
+			<fx:stroke>
+				<fx:SolidColorStroke color="0x4769C4" weight="1"/>
+			</fx:stroke>
+		</fx:Rect>
+		<fx:Rect height="20" width="33" radiusX="3" radiusY="3" horizontalCenter="0" verticalCenter="0">
+			<fx:fill>
+				<fx:SolidColor color="0xFFFFFF"/>
+			</fx:fill>
+			<fx:stroke>
+				<fx:SolidColorStroke color="0x4769C4" weight="1"/>
+			</fx:stroke>
+		</fx:Rect>
+		<fx:Ellipse height="12" width="12" horizontalCenter="0" verticalCenter="0">
+			<fx:fill>
+				<fx:SolidColor color="0xFFFFFF"/>
+			</fx:fill>
+			<fx:stroke>
+				<fx:SolidColorStroke color="0x000000" weight="1"/>
+			</fx:stroke>
+		</fx:Ellipse>
+	
+</fx:Skin>

@@ -1,4 +1,4 @@
-package com.pnwrain.view
+package com.pnwrain.pictair_me.view
 {
 	import flash.events.Event;
 	import flash.media.Camera;
