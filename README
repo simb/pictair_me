@@ -1,0 +1,11 @@
+PictAIR_Me is a simple application which allows you to take a photo using your webcam and update your profile picture on twitter.
+
+Implemented Features:
+	* Display Webcam
+	
+Features for v1:
+	* Capture picture and store to HD
+	* Allow Picture to upload to twitter
+	
+Features for future releases:
+	* Upload to other services
