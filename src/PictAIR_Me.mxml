@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" title="{this.width}:{this.height}"
+	layout="absolute"
+	width="640"
+	height="600"
+	horizontalScrollPolicy="off"
+	verticalScrollPolicy="off"
+	creationComplete="onCreationComplete()">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.core.UIComponent;
+				
+			private var vid:Video;
+			
+			private function onCreationComplete():void {
+				var vh:UIComponent = new UIComponent();
+				var cam:Camera = Camera.getCamera();
+				cam.setMode(640,480,24,true);
+				
+				vd.attachCamera(cam);
+			}
+		]]>
+	</mx:Script>
+	<mx:VideoDisplay id="vd" width="640" height="480" rotationY="180" x="640"  />
+	<mx:ApplicationControlBar top="480" width="100%" dock="false">
+		<mx:Button label="text" />
+		
+	</mx:ApplicationControlBar>
+</mx:WindowedApplication>
