@@ -11,10 +11,46 @@
 	<mx:Script>
 		<![CDATA[
 			import mx.core.UIComponent;
-				
+			import flash.filters.*;
+			import flash.utils.ByteArray;
+			
+			[Embed("com/pnwrain/pictair_me/filter/twirl.pbj", mimeType="application/octet-stream")]
+			private var TwirlFilter:Class;
+			[Embed("com/pnwrain/pictair_me/filter/pixelate.pbj", mimeType="application/octet-stream")]
+			private var PixelateFilter:Class;
+			[Embed("com/pnwrain/pictair_me/filter/sepia.pbj", mimeType="application/octet-stream")]
+			private var SepiaFilter:Class;
+			[Embed("com/pnwrain/pictair_me/filter/radialCaleidoscope.pbj", mimeType="application/octet-stream")]
+			private var CaleidoscopeFilter:Class;
+			
 			private function onCreationComplete():void {
-				
-				
+				//addPixelateFilter();
+				//addTwirlFilter();
+				//addSepiaFilter();
+				//addCaleidoscopeFilter();
+			}
+			private function addTwirlFilter():void {
+				var shader:Shader = new Shader(new TwirlFilter() as ByteArray);
+				shader.data.twirlAngle.value[0] = 140;
+				shader.data.radius.value[0] = 60;
+				var filter:ShaderFilter = new ShaderFilter(shader);
+				vd.filters = [filter];
+			}
+			private function addPixelateFilter():void {
+				var shader:Shader = new Shader(new PixelateFilter() as ByteArray);
+				shader.data.dimension.value[0] = 10;
+				var filter:ShaderFilter = new ShaderFilter(shader);
+				vd.filters = [filter];
+			}
+			private function addSepiaFilter():void {
+				var shader:Shader = new Shader(new SepiaFilter() as ByteArray);
+				var filter:ShaderFilter = new ShaderFilter(shader);
+				vd.filters = [filter];
+			}
+			private function addCaleidoscopeFilter():void {
+				var shader:Shader = new Shader(new CaleidoscopeFilter() as ByteArray);
+				var filter:ShaderFilter = new ShaderFilter(shader);
+				vd.filters = [filter];
 			}
 		]]>
 	</mx:Script>
