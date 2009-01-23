@@ -45,9 +45,10 @@ package com.pnwrain.pictair_me.view
 		}
 		private function onTimerComplete(event:TimerEvent):void {
 			counter = NaN;
+			timer.reset();
 			invalidateSkinState();
 			var e:Event = new Event("countDownEnd");
-			dispatchEvent(event);
+			dispatchEvent(e);
 		}
 		
 		
