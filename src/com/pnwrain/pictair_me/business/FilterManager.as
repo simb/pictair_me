@@ -4,20 +4,21 @@ package com.pnwrain.pictair_me.business
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
+	import flash.filters.ShaderFilter;
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
 	
 	import mx.collections.ArrayCollection;
-	import flash.filters.ShaderFilter;
 	
 	public class FilterManager
 	{
 		[Bindable]
 		public var filters:ArrayCollection;
-		
+		private const NO_FILTER:String = "No Filter Selected";
 		private var filterFiles:Dictionary;
 		public function FilterManager()
 		{
+			loadFilters();
 		}
 		
 		public function loadFilters():void{
@@ -25,14 +26,15 @@ package com.pnwrain.pictair_me.business
 			var files:Array = filterDirectory.getDirectoryListing();
 			filterFiles = new Dictionary();
 			filters = new ArrayCollection();
-			filters.addItem(""); //add a blank item to the front of the list
+			filters.addItem(NO_FILTER); //add a blank item to the front of the list
 			for ( var i:int=0;i<files.length;i++) {
 				filterFiles[files[i].name] = files[i];
 				filters.addItem( files[i].name );
 			}
 		}
-		public function getFilter(filterName:String):ShaderFilter {
-			if ( filterName.length != 0) {
+		//returns array of ShaderFilter objects
+		public function getFilter(filterName:String):Array {
+			if ( filterName != NO_FILTER) {
 				
 				var fileStream:FileStream = new FileStream();
 				var byteData:ByteArray = new ByteArray();
@@ -42,9 +44,9 @@ package com.pnwrain.pictair_me.business
 				var shader:Shader = new Shader(byteData);
 				
 				//for now just return the shadefilter. Later implement loading settings.
-				return new ShaderFilter(shader);
+				return [new ShaderFilter(shader)];
 			} else {
-				return null
+				return []
 			}
 		}
 	}

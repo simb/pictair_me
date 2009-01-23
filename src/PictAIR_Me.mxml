@@ -20,16 +20,15 @@
 			
 			private function onCreationComplete():void {
 				filterManager = new FilterManager();
-				filterManager.loadFilters();
-				
 			}
 		
 			private function loadFilter(event:Event):void {
-				vd.filters = [filterManager.getFilter(event.target.selectedItem)];
+				vd.filters = filterManager.getFilter(event.target.selectedItem);
 			}
 		]]>
 	</Script>
 	<view:VideoDisplay id="vd" width="640" height="480" />
+	<view:CountDownTimer id="timer" skinClass="{com.pnwrain.pictair_me.skin.CountDownTimerSkin}" horizontalCenter="0" top="380" />
 	
 	<ApplicationControlBar top="480" width="100%" dock="false" >
 		<Canvas width="100%" height="100%">
