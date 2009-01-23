@@ -28,11 +28,12 @@
 		]]>
 	</Script>
 	<view:VideoDisplay id="vd" width="640" height="480" />
-	<view:CountDownTimer id="timer" skinClass="{com.pnwrain.pictair_me.skin.CountDownTimerSkin}" horizontalCenter="0" top="380" />
+	<view:CountDownTimer id="timer" skinClass="{com.pnwrain.pictair_me.skin.CountDownTimerSkin}" horizontalCenter="0" top="380" visible="false"
+		countDownStart="timer.visible=true" countDownCancel="timer.visible=false" countDownEnd="timer.visible=false"  />
 	
 	<ApplicationControlBar top="480" width="100%" dock="false" >
 		<Canvas width="100%" height="100%">
-			<FxButton label="text" skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin" height="50" width="50" horizontalCenter="0" verticalCenter="0"/>
+			<FxButton click="timer.countDown()" skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin" height="50" width="50" horizontalCenter="0" verticalCenter="0"/>
 			<ComboBox dataProvider="{filterManager.filters}" labelField="name" verticalCenter="0" right="10" change="loadFilter(event)"/>
 		</Canvas>
 	</ApplicationControlBar>
