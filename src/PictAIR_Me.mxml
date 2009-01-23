@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WindowedApplication xmlns="http://ns.adobe.com/mxml/2009"  xmlns:view="com.pnwrain.pictair_me.view.*"
-	title="{this.width}:{this.height}"
-	layout="absolute"
-	width="640"
-	height="700"
-	horizontalScrollPolicy="off"
-	verticalScrollPolicy="off"
-	creationComplete="onCreationComplete()" >
-	
+<WindowedApplication height="700" width="640"
+					 layout="absolute"
+					 creationComplete="onCreationComplete()"
+					 horizontalScrollPolicy="off"
+					 title="{this.width}:{this.height}"
+					 verticalScrollPolicy="off"
+					 xmlns="http://ns.adobe.com/mxml/2009"
+					 xmlns:view="com.pnwrain.pictair_me.view.*">	
 	<Script>
 		<![CDATA[
 			import mx.core.UIComponent;
@@ -27,13 +26,30 @@
 			}
 		]]>
 	</Script>
-	<view:VideoDisplay id="vd" width="640" height="480" />
-	<view:CountDownTimer id="timer" skinClass="{com.pnwrain.pictair_me.skin.CountDownTimerSkin}" horizontalCenter="0" top="380" />
-	
-	<ApplicationControlBar top="480" width="100%" dock="false" >
-		<Canvas width="100%" height="100%">
-			<FxButton label="text" skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin" height="50" width="50" horizontalCenter="0" verticalCenter="0"/>
-			<ComboBox dataProvider="{filterManager.filters}" labelField="name" verticalCenter="0" right="10" change="loadFilter(event)"/>
+	<view:VideoDisplay id="vd"
+					   height="480" width="640"/>
+	<view:CountDownTimer id="timer"
+						 horizontalCenter="0"
+						 skinClass="{com.pnwrain.pictair_me.skin.CountDownTimerSkin}"
+						 top="380"/>
+						 
+	<ApplicationControlBar width="100%"
+						   dock="false"
+						   top="480">
+						   
+		<Canvas height="100%" width="100%">
+		
+			<FxButton label="text"
+					  height="50" width="50"
+					  horizontalCenter="0"
+					  skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin"
+					  verticalCenter="0"/>
+					  
+			<ComboBox change="loadFilter(event)"
+					  dataProvider="{filterManager.filters}"
+					  labelField="name"
+					  right="10"
+					  verticalCenter="0"/>
 		</Canvas>
 	</ApplicationControlBar>
 </WindowedApplication>

@@ -14,7 +14,7 @@
 -->
 
 	<!-- The application identifier string, unique to this application. Required. -->
-	<id>PictAIR-Me</id>
+	<id>pictair-me</id>
 
 	<!-- Used as the filename for the application. Required. -->
 	<filename>PictAIR_Me</filename>
