@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Skin xmlns="http://ns.adobe.com/mxml/2009" 
+	  minWidth="21" minHeight="21"
+	  >
+
+	<!-- host component -->
+	<Metadata>
+		[HostComponent("com.pnwrain.pictair_me.view.CountDownTimer")]
+	</Metadata>
+    
+	<!-- states -->
+	<states>
+		<State name="Base" />
+		<State name="Three" />
+		<State name="Two" />
+		<State name="One" />
+	</states>
+	
+	<Rect width="400" height="30.3281" verticalCenter="0"  includeIn="Base,Base,One,Three,Two">
+		<fill>
+			<SolidColor color="0xff0000"/>
+		</fill>
+		<stroke>
+			<SolidColorStroke color="0xffffff" caps="none" weight="1" joints="miter" miterLimit="4"/>
+		</stroke>
+	</Rect>
+	<Group left="304" includeIn="Base,One,Three,Two">
+		<Ellipse width="70" height="70" top="0" left="0">
+			<fill>
+				<SolidColor color="0xff0000" color.One="0xFFFFFF"/>
+			</fill>
+			<stroke>
+				<SolidColorStroke color="0xffffff" color.One="0xFF0000" caps="none" weight="2" joints="miter" miterLimit="4"/>
+			</stroke>
+		</Ellipse>
+		<TextGraphic fontFamily="Arial" fontSize="50" fontWeight="bold" lineHeight="120%" color="0xffffff" color.One="0xFF0000" whiteSpaceCollapse="preserve" kerning="on" 
+			horizontalCenter="2" verticalCenter="2" text="1" />
+	</Group>
+	<Group left="165" includeIn="Base,One,Three,Two">
+		<Group top="0" left="0">
+			<Ellipse width="70.001" height="70.001" top="0" left="0">
+				<fill>
+					<SolidColor color="0xff0000" color.Two="0xFFFFFF"/>
+				</fill>
+				<stroke>
+					<SolidColorStroke color="0xffffff" color.Two="0xFF0000" caps="none" weight="2" joints="miter" miterLimit="4"/>
+				</stroke>
+			</Ellipse>
+		</Group>
+		<TextGraphic fontFamily="Arial" fontSize="50" fontWeight="bold" lineHeight="120%" color="0xffffff" color.Two="0xFF0000" whiteSpaceCollapse="preserve" kerning="on" 
+			horizontalCenter="2" verticalCenter="2" text="2" />
+	</Group>
+	<Group left="25" includeIn="Base,One,Three,Two">
+		<Ellipse width="70.001" height="70.001"  top="0" left="0">
+			<fill>
+				<SolidColor color="0xff0000" color.Three="0xffffff"/>
+			</fill>
+			<stroke>
+				<SolidColorStroke caps="none" weight="2" joints="miter" miterLimit="4" color="0xffffff" color.Three="0xff0000" />
+			</stroke>
+		</Ellipse>
+		<TextGraphic fontFamily="Arial" fontSize="50" fontWeight="bold" lineHeight="120%" color="0xffffff" color.Three="0xFF0000" whiteSpaceCollapse="preserve" kerning="on" 
+			horizontalCenter="2" verticalCenter="2" text="3" />
+	</Group>
+</Skin>
