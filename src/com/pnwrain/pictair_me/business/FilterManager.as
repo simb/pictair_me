@@ -9,13 +9,13 @@ package com.pnwrain.pictair_me.business
 	
 	import mx.collections.ArrayCollection;
 
-	public class FilterLoader
+	public class FilterManager
 	{
 		[Bindable]
 		public var filters:ArrayCollection;
 		
 		private var filterFiles:Dictionary;
-		public function FilterLoader()
+		public function FilterManager()
 		{
 		}
 		
@@ -24,12 +24,14 @@ package com.pnwrain.pictair_me.business
 			var files:Array = filterDirectory.getDirectoryListing();
 			filterFiles = new Dictionary();
 			filters = new ArrayCollection();
+			filters.addItem(""); //add a blank item to the front of the list
 			for ( var i:int=0;i<files.length;i++) {
 				filterFiles[files[i].name] = files[i];
 				filters.addItem( files[i].name );
 			}
 		}
 		public function getFilter(filterName:String):Shader {
+			
 			var fileStream:FileStream = new FileStream();
 			var byteData:ByteArray = new ByteArray();
 			fileStream.open(filterFiles[filterName], FileMode.READ);

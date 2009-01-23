@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:WindowedApplication xmlns:mx="http://ns.adobe.com/mxml/2009" xmlns:view="com.pnwrain.pictair_me.view.*"
+<WindowedApplication xmlns="http://ns.adobe.com/mxml/2009"  xmlns:view="com.pnwrain.pictair_me.view.*"
 	title="{this.width}:{this.height}"
 	layout="absolute"
 	width="640"
@@ -8,70 +8,39 @@
 	verticalScrollPolicy="off"
 	creationComplete="onCreationComplete()" >
 	
-	<mx:Script>
+	<Script>
 		<![CDATA[
 			import mx.core.UIComponent;
-			import flash.filters.*;
+			import flash.filters.ShaderFilter;
 			import flash.utils.ByteArray;
-			import com.pnwrain.pictair_me.business.FilterLoader;
-			
-			[Embed("com/pnwrain/pictair_me/filter/twirl.pbj", mimeType="application/octet-stream")]
-			private var TwirlFilter:Class;
-			[Embed("com/pnwrain/pictair_me/filter/pixelate.pbj", mimeType="application/octet-stream")]
-			private var PixelateFilter:Class;
-			[Embed("com/pnwrain/pictair_me/filter/sepia.pbj", mimeType="application/octet-stream")]
-			private var SepiaFilter:Class;
-			[Embed("com/pnwrain/pictair_me/filter/radialCaleidoscope.pbj", mimeType="application/octet-stream")]
-			private var CaleidoscopeFilter:Class;
+			import com.pnwrain.pictair_me.business.FilterManager;
 			
 			[Bindable]
-			private var filterManager:FilterLoader;
+			private var filterManager:FilterManager;
 			
 			private function onCreationComplete():void {
-				filterManager = new FilterLoader();
+				filterManager = new FilterManager();
 				filterManager.loadFilters();
-				//addPixelateFilter();
-				//addTwirlFilter();
-				//addSepiaFilter();
-				//addCaleidoscopeFilter();
 				
 			}
-			private function addTwirlFilter():void {
-				var shader:Shader = new Shader(new TwirlFilter() as ByteArray);
-				shader.data.twirlAngle.value[0] = 140;
-				shader.data.radius.value[0] = 60;
-				var filter:ShaderFilter = new ShaderFilter(shader);
-				vd.filters = [filter];
-			}
-			private function addPixelateFilter():void {
-				var shader:Shader = new Shader(new PixelateFilter() as ByteArray);
-				shader.data.dimension.value[0] = 10;
-				var filter:ShaderFilter = new ShaderFilter(shader);
-				vd.filters = [filter];
-			}
-			private function addSepiaFilter():void {
-				var shader:Shader = new Shader(new SepiaFilter() as ByteArray);
-				var filter:ShaderFilter = new ShaderFilter(shader);
-				vd.filters = [filter];
-			}
-			private function addCaleidoscopeFilter():void {
-				var shader:Shader = new Shader(new CaleidoscopeFilter() as ByteArray);
-				var filter:ShaderFilter = new ShaderFilter(shader);
-				vd.filters = [filter];
-			}
+		
 			private function loadFilter(event:Event):void {
-				var shader:Shader = filterManager.getFilter(event.target.selectedItem);
-				var filter:ShaderFilter = new ShaderFilter(shader);
-				vd.filters = [filter];
+				if (event.target.selectedItem.length != 0) {
+					var shader:Shader = filterManager.getFilter(event.target.selectedItem);
+					var filter:ShaderFilter = new ShaderFilter(shader);
+					vd.filters = [filter];
+				} else {
+					vd.filters = [];
+				}
 			}
 		]]>
-	</mx:Script>
+	</Script>
 	<view:VideoDisplay id="vd" width="640" height="480" />
 	
-	<mx:ApplicationControlBar top="480" width="100%" dock="false" >
-		<mx:Canvas width="100%" height="100%">
-			<mx:FxButton label="text" skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin" height="50" width="50" horizontalCenter="0" verticalCenter="0"/>
-			<mx:ComboBox dataProvider="{filterManager.filters}" labelField="name" verticalCenter="0" right="10" change="loadFilter(event)"/>
-		</mx:Canvas>
-	</mx:ApplicationControlBar>
-</mx:WindowedApplication>
+	<ApplicationControlBar top="480" width="100%" dock="false" >
+		<Canvas width="100%" height="100%">
+			<FxButton label="text" skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin" height="50" width="50" horizontalCenter="0" verticalCenter="0"/>
+			<ComboBox dataProvider="{filterManager.filters}" labelField="name" verticalCenter="0" right="10" change="loadFilter(event)"/>
+		</Canvas>
+	</ApplicationControlBar>
+</WindowedApplication>
