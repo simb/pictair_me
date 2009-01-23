@@ -25,13 +25,7 @@
 			}
 		
 			private function loadFilter(event:Event):void {
-				if (event.target.selectedItem.length != 0) {
-					var shader:Shader = filterManager.getFilter(event.target.selectedItem);
-					var filter:ShaderFilter = new ShaderFilter(shader);
-					vd.filters = [filter];
-				} else {
-					vd.filters = [];
-				}
+				vd.filters = [filterManager.getFilter(event.target.selectedItem)];
 			}
 		]]>
 	</Script>

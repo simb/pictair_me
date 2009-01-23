@@ -8,7 +8,8 @@ package com.pnwrain.pictair_me.business
 	import flash.utils.Dictionary;
 	
 	import mx.collections.ArrayCollection;
-
+	import flash.filters.ShaderFilter;
+	
 	public class FilterManager
 	{
 		[Bindable]
@@ -30,15 +31,21 @@ package com.pnwrain.pictair_me.business
 				filters.addItem( files[i].name );
 			}
 		}
-		public function getFilter(filterName:String):Shader {
-			
-			var fileStream:FileStream = new FileStream();
-			var byteData:ByteArray = new ByteArray();
-			fileStream.open(filterFiles[filterName], FileMode.READ);
-			fileStream.readBytes(byteData, 0, filterFiles[filterName].size);
-     		fileStream.close();
-			var shader:Shader = new Shader(byteData);
-			return shader;
+		public function getFilter(filterName:String):ShaderFilter {
+			if ( filterName.length != 0) {
+				
+				var fileStream:FileStream = new FileStream();
+				var byteData:ByteArray = new ByteArray();
+				fileStream.open(filterFiles[filterName], FileMode.READ);
+				fileStream.readBytes(byteData, 0, filterFiles[filterName].size);
+	     		fileStream.close();
+				var shader:Shader = new Shader(byteData);
+				
+				//for now just return the shadefilter. Later implement loading settings.
+				return new ShaderFilter(shader);
+			} else {
+				return null
+			}
 		}
 	}
 }
