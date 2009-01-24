@@ -2,10 +2,11 @@ PictAIR_Me is a simple application which allows you to take a photo using your w
 
 Implemented Features:
 	* Display Webcam
+	* Allow Picture to upload to twitter
+	* Use Pixel Bender filters to change webcam picture
 	
 Features for v1:
 	* Capture picture and store to HD
-	* Allow Picture to upload to twitter
 	
 Features for future releases:
 	* Upload to other services
