@@ -1,5 +1,7 @@
 package com.pnwrain.pictair_me.business
 {
+	import com.pnwrain.pictair_me.vo.Picture;
+	
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
@@ -15,7 +17,8 @@ package com.pnwrain.pictair_me.business
 	public class PictureManager
 	{
 		private const picturePath:File = File.applicationStorageDirectory.resolvePath("pictures");
-		private var pictures:ArrayCollection = new ArrayCollection();
+		[Bindable]
+		public var pictures:ArrayCollection = new ArrayCollection();
 		
 		public function PictureManager()
 		{
@@ -26,7 +29,7 @@ package com.pnwrain.pictair_me.business
 			var pa:Array = picturePath.getDirectoryListing();
 			for ( var i:int=0;i<pa.length;i++ ) {
 				if ( File(pa[i]).extension == "jpg" ) {
-					pictures.addItem( pa[i] );
+					pictures.addItem( new Picture(pa[i] as File) );
 				}
 			}
 			trace("pictures saved: " + pictures.length);
@@ -39,7 +42,7 @@ package com.pnwrain.pictair_me.business
 			
 			return pic_path;
 		}
-		public function savePicture(source:DisplayObject):String {
+		public function savePicture(source:DisplayObject):void {
 			var jpe:JPEGEncoder = new JPEGEncoder(100);
 			var imageBitmap:Bitmap = new Bitmap( copyBitmap(source) );
 			
@@ -60,8 +63,8 @@ package com.pnwrain.pictair_me.business
 			fs.close();
 			trace(image.nativePath);
 			
-			pictures.addItem( image );
-			return image.url;
+			pictures.addItem( new Picture(image as File) );
+			
 		}
 		private function copyBitmap(source:DisplayObject):BitmapData {
 			var bmd:BitmapData = new BitmapData(source.width, source.height);

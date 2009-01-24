@@ -20,6 +20,7 @@
 			
 			[Bindable]
 			private var filterManager:FilterManager;
+			[Bindable]
 			private var pictureManager:PictureManager;
 			[Bindable]
 			private var applicationManager:ApplicationManager;
@@ -40,11 +41,11 @@
 			
 			private function takePicture():void {
 				timer.visible = false;
-				pictures.addItem(pictureManager.savePicture(vd));
+				pictureManager.savePicture(vd);
 			}
 			private function slideListPosition(steps:int):void{
 				var newPosition:int = pictureList.horizontalScrollPosition + steps;
-				if ( newPosition >= 0 && newPosition < pictureList.dataProvider.length-2) {
+				if ( newPosition >= 0 && newPosition < pictureList.dataProvider.length-3) {
 					pictureList.horizontalScrollPosition += steps;
 				}
 			}
@@ -62,7 +63,7 @@
 	</ApplicationControlBar>
 	<HBox bottom="0" width="100%" height="140" horizontalGap="0">
 		<FxButton height="100%" width="20" click="slideListPosition(-1)" />
-		<HorizontalList liveScrolling="true" id="pictureList" width="100%" height="140" dataProvider="{pictures}" itemRenderer="com.pnwrain.pictair_me.view.ImageThumbnail" horizontalScrollPolicy="off" />
+		<HorizontalList liveScrolling="true" id="pictureList" width="100%" height="140" dataProvider="{pictureManager.pictures}" itemRenderer="com.pnwrain.pictair_me.view.ImageThumbnail" horizontalScrollPolicy="off" />
 		<FxButton height="100%" width="20" label="" click="slideListPosition(1)" />
 	</HBox>
 	
