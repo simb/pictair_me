@@ -7,7 +7,10 @@
 	horizontalScrollPolicy="off"
 	verticalScrollPolicy="off"
 	creationComplete="onCreationComplete()" >
-	
+	<states>
+		<State name="Base" />
+		<State name="photoDisplay" />
+	</states>
 	<Script>
 		<![CDATA[
 			import mx.core.UIComponent;
@@ -17,6 +20,7 @@
 			import com.pnwrain.pictair_me.business.FilterManager;
 			import com.pnwrain.pictair_me.business.PictureManager;
 			import com.pnwrain.pictair_me.business.ApplicationManager;
+			import com.pnwrain.pictair_me.vo.Picture;
 			
 			[Bindable]
 			private var filterManager:FilterManager;
@@ -26,13 +30,13 @@
 			private var applicationManager:ApplicationManager;
 			
 			[Bindable]
-			private var pictures:ArrayCollection;
+			private var selectedPicture:Picture;
 			
 			private function onCreationComplete():void {
 				filterManager = new FilterManager();
 				pictureManager = new PictureManager();
 				applicationManager = new ApplicationManager();
-				pictures = new ArrayCollection( pictureManager.loadPictures() );
+				pictureManager.loadPictures();
 			}
 		
 			private function loadFilter(event:Event):void {
@@ -49,22 +53,30 @@
 					pictureList.horizontalScrollPosition += steps;
 				}
 			}
+			private function displayPhoto(event:Event):void {
+				selectedPicture = event.target.selectedItem;
+				currentState = "photoDisplay";
+			}
+			private function captureVideo():void {
+				selectedPicture = null;
+				currentState = "";
+			}
 		]]>
 	</Script>
 	<view:VideoDisplay id="vd" width="640" height="480" />
+	<Image source="{selectedPicture.url}" width="640" height="480" includeIn="photoDisplay" />
 	<view:CountDownTimer id="timer" skinClass="{com.pnwrain.pictair_me.skin.CountDownTimerSkin}" horizontalCenter="0" top="380" visible="false"
 		countDownStart="timer.visible=true" countDownCancel="timer.visible=false" countDownEnd="takePicture();"  />
 
 	<ApplicationControlBar top="480" width="100%" dock="false" >
 		<Canvas width="100%" height="100%">
-			<FxButton click="timer.countDown()" skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin" height="50" width="50" horizontalCenter="0" verticalCenter="0"/>
+			<FxButton click="timer.countDown()" click.photoDisplay="captureVideo()" skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin" height="50" width="50" horizontalCenter="0" verticalCenter="0"/>
 			<ComboBox dataProvider="{filterManager.filters}" labelField="name" verticalCenter="0" right="10" change="loadFilter(event)"/>
 		</Canvas>
 	</ApplicationControlBar>
 	<HBox bottom="0" width="100%" height="140" horizontalGap="0">
 		<FxButton height="100%" width="20" click="slideListPosition(-1)" />
-		<HorizontalList liveScrolling="true" id="pictureList" width="100%" height="140" dataProvider="{pictureManager.pictures}" itemRenderer="com.pnwrain.pictair_me.view.ImageThumbnail" horizontalScrollPolicy="off" />
+		<HorizontalList liveScrolling="true" id="pictureList" change="displayPhoto(event)" width="100%" height="140" dataProvider="{pictureManager.pictures}" itemRenderer="com.pnwrain.pictair_me.view.ImageThumbnail" horizontalScrollPolicy="off" />
 		<FxButton height="100%" width="20" label="" click="slideListPosition(1)" />
 	</HBox>
-	
 </WindowedApplication>
