@@ -44,7 +44,7 @@
 			}
 			private function slideListPosition(steps:int):void{
 				var newPosition:int = pictureList.horizontalScrollPosition + steps;
-				if ( newPosition >= 0 && newPosition < pictureList.dataProvider.length-3) {
+				if ( newPosition >= 0 && newPosition < pictureList.dataProvider.length-2) {
 					pictureList.horizontalScrollPosition += steps;
 				}
 			}
