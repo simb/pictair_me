@@ -16,7 +16,6 @@
 	</mx:Script>
 	<mx:DateFormatter id="df" formatString="MM/DD/YY L:NN A" />
 
-	
 	<mx:Image source="{data.url}" top="20" left="5" right="5" />
 	<mx:Label text="{title}" />
 	
