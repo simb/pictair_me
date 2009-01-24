@@ -13,16 +13,20 @@
 			import mx.core.UIComponent;
 			import flash.filters.ShaderFilter;
 			import flash.utils.ByteArray;
+			import mx.collections.ArrayCollection;
 			import com.pnwrain.pictair_me.business.FilterManager;
 			import com.pnwrain.pictair_me.business.PictureManager;
 			
 			[Bindable]
 			private var filterManager:FilterManager;
 			private var pictureManager:PictureManager;
+			[Bindable]
+			private var pictures:ArrayCollection;
 			
 			private function onCreationComplete():void {
 				filterManager = new FilterManager();
 				pictureManager = new PictureManager();
+				pictures = new ArrayCollection( pictureManager.loadPictures() );
 			}
 		
 			private function loadFilter(event:Event):void {
@@ -31,7 +35,7 @@
 			
 			private function takePicture():void {
 				timer.visible = false;
-				pictureManager.savePicture(vd);
+				pictures.addItem(pictureManager.savePicture(vd));
 			}
 		]]>
 	</Script>
@@ -45,4 +49,10 @@
 			<ComboBox dataProvider="{filterManager.filters}" labelField="name" verticalCenter="0" right="10" change="loadFilter(event)"/>
 		</Canvas>
 	</ApplicationControlBar>
+	<HBox bottom="0" width="100%" height="140" horizontalGap="0">
+		<FxButton height="100%" width="20" />
+		<HorizontalList width="100%" height="140"  dataProvider="{pictures}" itemRenderer="com.pnwrain.pictair_me.view.ImageThumbnail" />
+		<FxButton height="100%" width="20" label="" />
+	</HBox>
+	
 </WindowedApplication>

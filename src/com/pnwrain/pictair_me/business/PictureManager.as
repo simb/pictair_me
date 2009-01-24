@@ -9,22 +9,37 @@ package com.pnwrain.pictair_me.business
 	import flash.geom.Matrix;
 	import flash.utils.ByteArray;
 	
+	import mx.collections.ArrayCollection;
 	import mx.graphics.codec.JPEGEncoder;
 	
 	public class PictureManager
 	{
 		private const picturePath:File = File.applicationStorageDirectory.resolvePath("pictures");
+		private var pictures:ArrayCollection = new ArrayCollection();
+		
 		public function PictureManager()
 		{
 			if ( !picturePath.exists ) {
 				picturePath.createDirectory();
 			}
-			trace("pictures saved: " + picturePath.getDirectoryListing().length);
+			pictures = new ArrayCollection( );
+			var pa:Array = picturePath.getDirectoryListing();
+			for ( var i:int=0;i<pa.length;i++ ) {
+				if ( File(pa[i]).extension == "jpg" ) {
+					pictures.addItem( pa[i] );
+				}
+			}
+			trace("pictures saved: " + pictures.length);
 		}
-		public function getPictures():Array {
-			return picturePath.getDirectoryListing();
+		public function loadPictures():Array {
+			var pic_path:Array = [];
+			for ( var i:int=0;i<pictures.length;i++) {
+				pic_path.push(pictures.getItemAt(i).url );
+			}
+			
+			return pic_path;
 		}
-		public function savePicture(source:DisplayObject):void {
+		public function savePicture(source:DisplayObject):String {
 			var jpe:JPEGEncoder = new JPEGEncoder(100);
 			var imageBitmap:Bitmap = new Bitmap( copyBitmap(source) );
 			
@@ -36,7 +51,6 @@ package com.pnwrain.pictair_me.business
 			var flippedBitmap:BitmapData = new BitmapData(imageBitmap.width,imageBitmap.height,false,0xFFCC00)
 			flippedBitmap.draw(imageBitmap,flipHorizontalMatrix)
 
-			//var data:ByteArray = jpe.encode( imageBitmap.bitmapData );
 			var data:ByteArray = jpe.encode( flippedBitmap );
 			
 			var image:File = picturePath.resolvePath(new Date().time + ".jpg");
@@ -45,6 +59,9 @@ package com.pnwrain.pictair_me.business
 			fs.writeBytes(data);
 			fs.close();
 			trace(image.nativePath);
+			
+			pictures.addItem( image );
+			return image.url;
 		}
 		private function copyBitmap(source:DisplayObject):BitmapData {
 			var bmd:BitmapData = new BitmapData(source.width, source.height);
