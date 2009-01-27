@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<filter>
+	<name>Sharpen</name>
+	<properties>
+		<amount>20</amount>
+		<radius>.9</radius>
+	</properties>
+</filter>

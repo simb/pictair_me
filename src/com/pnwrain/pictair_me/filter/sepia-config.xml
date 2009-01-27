@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<filter>
+	<name>Sepia</name>
+	<properties>
+		<intensity>.05</intensity>
+	</properties>	
+</filter>

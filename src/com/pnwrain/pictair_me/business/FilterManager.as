@@ -4,6 +4,7 @@ package com.pnwrain.pictair_me.business
 	import com.pnwrain.pictair_me.vo.FilterProperty;
 	
 	import flash.display.Shader;
+	import flash.display.ShaderParameter;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
@@ -59,8 +60,8 @@ package com.pnwrain.pictair_me.business
 				var shader:Shader = new Shader(byteData);
 				//filter.properties is initialized as [] so we can loop over nothing safely
 				for ( var i:int=0; i<filter.properties.length; i++) {
-					var fc:FilterProperty = filter.properties[i]
-					shader.data[fc.name].value[0] = parseFloat(fc.value);
+					var fc:FilterProperty = filter.properties[i];
+					shader.data[fc.name].value = [parseFloat(fc.value)];
 				}
 				//for now just return the shadefilter. Later implement loading settings.
 				return [new ShaderFilter(shader)];
