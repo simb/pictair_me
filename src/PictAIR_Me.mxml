@@ -72,7 +72,7 @@
 		<Canvas width="100%" height="100%">
 			<FxButton click="pictureManager.upload(selectedPicture)" includeIn="photoDisplay" label="Upload to Twitter" verticalCenter="0" left="10" />
 			<FxButton click="timer.countDown()" click.photoDisplay="captureVideo()" skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin" height="50" width="50" horizontalCenter="0" verticalCenter="0"/>
-			<ComboBox dataProvider="{filterManager.filters}" labelField="name" verticalCenter="0" right="10" change="loadFilter(event)"/>
+			<ComboBox dataProvider="{filterManager.filters}" labelField="displayName" verticalCenter="0" right="10" change="loadFilter(event)"/>
 		</Canvas>
 	</ApplicationControlBar>
 	<HBox bottom="0" width="100%" height="140" horizontalGap="0">

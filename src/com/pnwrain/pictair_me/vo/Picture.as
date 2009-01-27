@@ -3,17 +3,11 @@ package com.pnwrain.pictair_me.vo
 	import flash.filesystem.File;
 	
 	[Bindable]
-	public class Picture
-	{
-		public var url:String;
-		public var name:String;
-		public var nativePath:String;
-		
-		public function Picture(file:File)
+	public class Picture extends com.pnwrain.pictair_me.vo.File
+	{	
+		public function Picture(file:flash.filesystem.File)
 		{
-			url = file.url;
-			name = file.name;
-			nativePath = file.nativePath;
+			super(file);
 		}
 
 	}

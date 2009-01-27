@@ -24,17 +24,17 @@ package com.pnwrain.pictair_me.business
 	
 	public class PictureManager
 	{
-		private const picturePath:File = File.applicationStorageDirectory.resolvePath("pictures");
+		private const pictureDirectory:File = File.applicationStorageDirectory.resolvePath("pictures");
 		[Bindable]
 		public var pictures:ArrayCollection = new ArrayCollection();
 		
 		public function PictureManager()
 		{
-			if ( !picturePath.exists ) {
-				picturePath.createDirectory();
+			if ( !pictureDirectory.exists ) {
+				pictureDirectory.createDirectory();
 			}
 			pictures = new ArrayCollection( );
-			var pa:Array = picturePath.getDirectoryListing();
+			var pa:Array = pictureDirectory.getDirectoryListing();
 			for ( var i:int=0;i<pa.length;i++ ) {
 				if ( File(pa[i]).extension == "jpg" ) {
 					pictures.addItem( new Picture(pa[i] as File) );
@@ -64,7 +64,7 @@ package com.pnwrain.pictair_me.business
 
 			var data:ByteArray = jpe.encode( flippedBitmap );
 			
-			var image:File = picturePath.resolvePath(new Date().time + ".jpg");
+			var image:File = pictureDirectory.resolvePath(new Date().time + ".jpg");
 			var fs:FileStream = new FileStream();
 			fs.open(image,FileMode.WRITE);
 			fs.writeBytes(data);
