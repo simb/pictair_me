@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<filter>
+	<name>Zoom Blur</name>
+	<properties>
+		<amount>0.135</amount>
+	</properties>	
+</filter>

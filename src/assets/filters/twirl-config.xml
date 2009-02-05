@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<filter>
+	<name>Twirl</name>
+	<properties>
+		<twirlAngle>140</twirlAngle>
+		<radius>60</radius>
+	</properties>	
+</filter>

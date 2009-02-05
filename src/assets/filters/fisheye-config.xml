@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<filter>
+	<name>Fish Eye</name>
+	<properties>
+		<center_x>317</center_x>
+		<center_y>160</center_y>
+		<radius>500</radius>
+	</properties>
+</filter>
