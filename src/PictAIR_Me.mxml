@@ -11,6 +11,7 @@
 		<State name="Base" />
 		<State name="photoDisplay" />
 	</states>
+	
 	<Script>
 		<![CDATA[
 			import mx.core.UIComponent;

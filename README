@@ -4,9 +4,12 @@ Implemented Features:
 	* Display Webcam
 	* Allow Picture to upload to twitter
 	* Use Pixel Bender filters to change webcam picture
+	* Capture picture and store to HD
+	* Implement Update Framework
 	
 Features for v1:
-	* Capture picture and store to HD
+	* Add delete image
 	
 Features for future releases:
 	* Upload to other services
+	* Implement GUI for changing pixel bender filter properties

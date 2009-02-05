@@ -15,7 +15,8 @@ package com.pnwrain.pictair_me.business
 	
 	public class FilterManager
 	{
-		private const filterDirectory:File = File.applicationDirectory.resolvePath("com/pnwrain/pictair_me/filter/");
+		private const filterDirectory:File = File.applicationDirectory.resolvePath("assets/filters/");
+		
 		[Bindable]
 		public var filters:ArrayCollection;
 		private const NO_FILTER:String = "No Filter Selected";
@@ -23,7 +24,9 @@ package com.pnwrain.pictair_me.business
 		public function FilterManager()
 		{
 			loadFilters();
+			
 		}
+		
 		
 		public function loadFilters():void{
 			

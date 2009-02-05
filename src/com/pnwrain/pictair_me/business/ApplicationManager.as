@@ -18,7 +18,7 @@ package com.pnwrain.pictair_me.business
 		public function ApplicationManager()
 		{
 			getVersion();
-			//checkUpdate();
+			checkUpdate();
 		}
 		
 		private function getVersion():void {
@@ -29,20 +29,20 @@ package com.pnwrain.pictair_me.business
 		
 		private function checkUpdate():void {
 			// we set the URL for the update.xml file
-            appUpdater.updateURL = "http://picture_me.pnwrain.com/update/update.xml";
+            appUpdater.updateURL = "http://simb.github.com/pictair_me/update/update.xml";
             //we set the event handlers for INITIALIZED nad ERROR
             appUpdater.addEventListener(UpdateEvent.INITIALIZED, onUpdate);
             appUpdater.addEventListener(ErrorEvent.ERROR, onError);
-            appUpdater.addEventListener(UpdateEvent.BEFORE_INSTALL, onError);
-            appUpdater.addEventListener(UpdateEvent.CHECK_FOR_UPDATE, onError);
-            appUpdater.addEventListener(UpdateEvent.DOWNLOAD_COMPLETE, onError);
-            appUpdater.addEventListener(UpdateEvent.DOWNLOAD_START, onError);
-            appUpdater.addEventListener("progress", onError);
+            //appUpdater.addEventListener(UpdateEvent.BEFORE_INSTALL, onError);
+            //appUpdater.addEventListener(UpdateEvent.CHECK_FOR_UPDATE, onError);
+            //appUpdater.addEventListener(UpdateEvent.DOWNLOAD_COMPLETE, onError);
+            //appUpdater.addEventListener(UpdateEvent.DOWNLOAD_START, onError);
+            //appUpdater.addEventListener("progress", onError);
             //by default all the dialogs are hidden
 			appUpdater.isCheckForUpdateVisible = false;
-			appUpdater.isDownloadUpdateVisible = false;
-			appUpdater.isDownloadProgressVisible = false;
-			appUpdater.isInstallUpdateVisible = false;
+			appUpdater.isDownloadUpdateVisible = true;
+			appUpdater.isDownloadProgressVisible = true;
+			appUpdater.isInstallUpdateVisible = true;
 			
             //we initialize the updater
             appUpdater.initialize();
