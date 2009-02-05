@@ -6,7 +6,7 @@
 -->
 
   <!-- The new version of the AIR file. Required. -->
-  <version>0.7</version>
+  <version>0.8</version>
   
   <!-- URL that points to the new version of the AIR file. Required. -->
   <url>http://simb.github.com/pictair_me/update/PictAIR_Me.air</url>
@@ -17,6 +17,6 @@
          You cannot mix simple description with localized description.
     Optional. -->
   <description><![CDATA[
-  	
+  	Addded code for updater framework.
     ]]></description>
 </update>
