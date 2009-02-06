@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <WindowedApplication xmlns="http://ns.adobe.com/mxml/2009" xmlns:view="com.pnwrain.pictair_me.view.*"
 	title="Picture_Me {applicationManager.appVersion}"
 	layout="absolute"
@@ -64,6 +65,7 @@
 			}
 		]]>
 	</Script>
+
 	<view:VideoDisplay id="vd" width="640" height="480" />
 	<Image source="{selectedPicture.url}" width="640" height="480" includeIn="photoDisplay" />
 	<view:CountDownTimer id="timer" skinClass="{com.pnwrain.pictair_me.skin.CountDownTimerSkin}" horizontalCenter="0" top="380" visible="false"
@@ -74,6 +76,7 @@
 			<FxButton click="pictureManager.upload(selectedPicture)" includeIn="photoDisplay" label="Upload to Twitter" verticalCenter="0" left="10" />
 			<FxButton click="timer.countDown()" click.photoDisplay="captureVideo()" skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin" height="50" width="50" horizontalCenter="0" verticalCenter="0"/>
 			<ComboBox dataProvider="{filterManager.filters}" labelField="displayName" verticalCenter="0" right="10" change="loadFilter(event)"/>
+
 		</Canvas>
 	</ApplicationControlBar>
 	<HBox bottom="0" width="100%" height="140" horizontalGap="0">

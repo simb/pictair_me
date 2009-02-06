@@ -5,7 +5,7 @@ package com.pnwrain.pictair_me.view
 	import flash.utils.Timer;
 	
 	import mx.components.baseClasses.FxComponent;
-	
+
 	[SkinStates("Base", "Three", "Two", "One")]
 	[Event(name="countDownStart")]
 	[Event(name="countDownCancel")]
@@ -26,6 +26,10 @@ package com.pnwrain.pictair_me.view
 			timer.start()
 			var event:Event = new Event("countDownStart");
 			dispatchEvent(event);
+		}
+		override public function set currentState(stateName:String):void
+		{
+			setCurrentState(stateName);
 		}
 		public function cancel():void {
 			timer.stop();
@@ -52,7 +56,6 @@ package com.pnwrain.pictair_me.view
 		}
 		
 		
-		
 		override protected function getCurrentSkinState():String
 	    {
 	        switch (counter) {
@@ -73,3 +76,4 @@ package com.pnwrain.pictair_me.view
 	    }
 	}
 }
+
