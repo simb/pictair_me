@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Skin xmlns="http://ns.adobe.com/mxml/2009" 
+<s:Skin xmlns="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
 	  minWidth="21" minHeight="21"
-	  >
+	  xmlns:mx="library://ns.adobe.com/flex/halo">
 
 	<!-- host component -->
 	<Metadata>
@@ -9,45 +10,45 @@
 	</Metadata>
     
 	<!-- states -->
-	<states>
-		<State name="Base"/>
-		<State name="Three"/>
-		<State name="Two"/>
-		<State name="One"/>
-	</states>
-	<Rect height="30.3281" width="400"
+	<s:states>
+		<mx:State name="Base"/>
+		<mx:State name="Three"/>
+		<mx:State name="Two"/>
+		<mx:State name="One"/>
+	</s:states>
+	<s:Rect height="30.3281" width="400"
 		  includeIn="Base,Base,One,Three,Two"
 		  verticalCenter="0">
-		<fill>
-			<SolidColor color="0xff0000"/>
-		</fill>
-		<stroke>
-			<SolidColorStroke caps="none"
+		<s:fill>
+			<s:SolidColor color="0xff0000"/>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke caps="none"
 							  color="0xffffff"
 							  joints="miter"
 							  miterLimit="4"
 							  weight="1"/>
-		</stroke>
-	</Rect>
-	<Group includeIn="Base,One,Three,Two"
+		</s:stroke>
+	</s:Rect>
+	<s:Group includeIn="Base,One,Three,Two"
 		   left="304">
-		<Ellipse height="70" width="70"
+		<s:Ellipse height="70" width="70"
 				 left="0"
 				 top="0">
-			<fill>
-				<SolidColor color="0xff0000"
+			<s:fill>
+				<s:SolidColor color="0xff0000"
 							color.One="0xFFFFFF"/>
-			</fill>
-			<stroke>
-				<SolidColorStroke caps="none"
+			</s:fill>
+			<s:stroke>
+				<s:SolidColorStroke caps="none"
 								  color="0xffffff"
 								  color.One="0xFF0000"
 								  joints="miter"
 								  miterLimit="4"
 								  weight="2"/>
-			</stroke>
-		</Ellipse>
-		<TextGraphic color="0xffffff"
+			</s:stroke>
+		</s:Ellipse>
+		<s:SimpleText color="0xffffff"
 					 color.One="0xFF0000"
 					 fontFamily="Arial"
 					 fontSize="50"
@@ -56,31 +57,30 @@
 					 kerning="on"
 					 lineHeight="120%"
 					 text="1"
-					 verticalCenter="2"
-					 whiteSpaceCollapse="preserve"/>
-	</Group>
-	<Group includeIn="Base,One,Three,Two"
+					 verticalCenter="2" />
+	</s:Group>
+	<s:Group includeIn="Base,One,Three,Two"
 		   left="165">
-		<Group left="0"
+		<s:Group left="0"
 			   top="0">
-			<Ellipse height="70.001" width="70.001"
+			<s:Ellipse height="70.001" width="70.001"
 					 left="0"
 					 top="0">
-				<fill>
-					<SolidColor color="0xff0000"
+				<s:fill>
+					<s:SolidColor color="0xff0000"
 								color.Two="0xFFFFFF"/>
-				</fill>
-				<stroke>
-					<SolidColorStroke caps="none"
+				</s:fill>
+				<s:stroke>
+					<s:SolidColorStroke caps="none"
 									  color="0xffffff"
 									  color.Two="0xFF0000"
 									  joints="miter"
 									  miterLimit="4"
 									  weight="2"/>
-				</stroke>
-			</Ellipse>
-		</Group>
-		<TextGraphic color="0xffffff"
+				</s:stroke>
+			</s:Ellipse>
+		</s:Group>
+		<s:SimpleText color="0xffffff"
 					 color.Two="0xFF0000"
 					 fontFamily="Arial"
 					 fontSize="50"
@@ -89,28 +89,27 @@
 					 kerning="on"
 					 lineHeight="120%"
 					 text="2"
-					 verticalCenter="2"
-					 whiteSpaceCollapse="preserve"/>
-	</Group>
-	<Group includeIn="Base,One,Three,Two"
+					 verticalCenter="2" />
+	</s:Group>
+	<s:Group includeIn="Base,One,Three,Two"
 		   left="25">
-		<Ellipse height="70.001" width="70.001"
+		<s:Ellipse height="70.001" width="70.001"
 				 left="0"
 				 top="0">
-			<fill>
-				<SolidColor color="0xff0000"
+			<s:fill>
+				<s:SolidColor color="0xff0000"
 							color.Three="0xffffff"/>
-			</fill>
-			<stroke>
-				<SolidColorStroke caps="none"
+			</s:fill>
+			<s:stroke>
+				<s:SolidColorStroke caps="none"
 								  color="0xffffff"
 								  color.Three="0xff0000"
 								  joints="miter"
 								  miterLimit="4"
 								  weight="2"/>
-			</stroke>
-		</Ellipse>
-		<TextGraphic color="0xffffff"
+			</s:stroke>
+		</s:Ellipse>
+		<s:SimpleText color="0xffffff"
 					 color.Three="0xFF0000"
 					 fontFamily="Arial"
 					 fontSize="50"
@@ -120,6 +119,6 @@
 					 lineHeight="120%"
 					 text="3"
 					 verticalCenter="2"
-					 whiteSpaceCollapse="preserve"/>
-	</Group>
-</Skin>
+					 />
+	</s:Group>
+</s:Skin>

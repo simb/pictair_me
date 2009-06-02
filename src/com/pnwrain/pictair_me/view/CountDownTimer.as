@@ -4,13 +4,13 @@ package com.pnwrain.pictair_me.view
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
-	import mx.components.baseClasses.FxComponent;
+	import spark.components.supportClasses.SkinnableComponent;
 
 	[SkinStates("Base", "Three", "Two", "One")]
 	[Event(name="countDownStart")]
 	[Event(name="countDownCancel")]
 	[Event(name="countDownEnd")]
-	public class CountDownTimer extends FxComponent
+	public class CountDownTimer extends SkinnableComponent
 	{
 		private var counter:Number;
 		private var timer:Timer = new Timer(1000, 4);

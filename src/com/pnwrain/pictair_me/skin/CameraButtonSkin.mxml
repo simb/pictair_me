@@ -1,68 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fx:Skin alpha.disabled="0.5"
+<s:Skin alpha.disabled="0.5"
 		 minHeight="21"
 		 minWidth="21"
-		 xmlns:fx="http://ns.adobe.com/mxml/2009">
+		 xmlns="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/halo">
 	<!-- host component -->
-	<fx:Metadata>
-		[HostComponent("mx.components.FxButton")]
-	</fx:Metadata>
+	<Metadata>
+		[HostComponent("spark.components.Button")]
+	</Metadata>
 	<!-- states -->
-	<fx:states>
-		<fx:State name="up"/>
-		<fx:State name="over"/>
-		<fx:State name="down"/>
-		<fx:State name="disabled"/>
-	</fx:states>
-	<fx:Ellipse bottom="0"
+	<s:states>
+		<mx:State name="up"/>
+		<mx:State name="over"/>
+		<mx:State name="down"/>
+		<mx:State name="disabled"/>
+	</s:states>
+	<s:Ellipse bottom="0"
 				left="0"
 				right="0"
 				top="0">
-		<fx:fill>
-			<fx:SolidColor id="elipseBack"
+		<s:fill>
+			<s:SolidColor id="elipseBack"
 						   color="0x626382"
 						   color.up="0x181da0"/>
-		</fx:fill>
-		<fx:stroke>
-			<fx:SolidColorStroke color="0x2b303d"
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke color="0x2b303d"
 								 weight="2"/>
-		</fx:stroke>
-	</fx:Ellipse>
-	<fx:Rect height="11" width="13"
+		</s:stroke>
+	</s:Ellipse>
+	<s:Rect height="11" width="13"
 			 horizontalCenter="0"
 			 radiusX="10"
 			 radiusY="10"
 			 verticalCenter="-10">
-		<fx:fill>
-			<fx:SolidColor color="0xFFFFFF"/>
-		</fx:fill>
-		<fx:stroke>
-			<fx:SolidColorStroke color="0x4769C4"
+		<s:fill>
+			<s:SolidColor color="0xFFFFFF"/>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke color="0x4769C4"
 								 weight="1"/>
-		</fx:stroke>
-	</fx:Rect>
-	<fx:Rect height="20" width="33"
+		</s:stroke>
+	</s:Rect>
+	<s:Rect height="20" width="33"
 			 horizontalCenter="0"
 			 radiusX="3"
 			 radiusY="3"
 			 verticalCenter="0">
-		<fx:fill>
-			<fx:SolidColor color="0xFFFFFF"/>
-		</fx:fill>
-		<fx:stroke>
-			<fx:SolidColorStroke color="0x4769C4"
+		<s:fill>
+			<s:SolidColor color="0xFFFFFF"/>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke color="0x4769C4"
 								 weight="1"/>
-		</fx:stroke>
-	</fx:Rect>
-	<fx:Ellipse height="12" width="12"
+		</s:stroke>
+	</s:Rect>
+	<s:Ellipse height="12" width="12"
 				horizontalCenter="0"
 				verticalCenter="0">
-		<fx:fill>
-			<fx:SolidColor color="0xFFFFFF"/>
-		</fx:fill>
-		<fx:stroke>
-			<fx:SolidColorStroke color="0x000000"
+		<s:fill>
+			<s:SolidColor color="0xFFFFFF"/>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke color="0x000000"
 								 weight="1"/>
-		</fx:stroke>
-	</fx:Ellipse>
-</fx:Skin>
+		</s:stroke>
+	</s:Ellipse>
+</s:Skin>

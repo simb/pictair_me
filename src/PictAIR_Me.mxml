@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<WindowedApplication xmlns="http://ns.adobe.com/mxml/2009" xmlns:view="com.pnwrain.pictair_me.view.*"
+<s:WindowedApplication xmlns="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:view="com.pnwrain.pictair_me.view.*"
 	title="Picture_Me {applicationManager.appVersion}"
-	layout="absolute"
 	width="640"
 	height="700"
-	horizontalScrollPolicy="off"
-	verticalScrollPolicy="off"
-	creationComplete="onCreationComplete()" >
-	<states>
-		<State name="Base" />
-		<State name="photoDisplay" />
-	</states>
+	creationComplete="onCreationComplete()" xmlns:mx="library://ns.adobe.com/flex/halo">
 	
+	<s:states>
+		<mx:State name="Base" />
+		<mx:State name="photoDisplay" />
+	</s:states>	
 	<Script>
 		<![CDATA[
+			import spark.layouts.HorizontalLayout;
 			import mx.core.UIComponent;
 			import flash.filters.ShaderFilter;
 			import flash.utils.ByteArray;
@@ -65,23 +62,22 @@
 			}
 		]]>
 	</Script>
-
 	<view:VideoDisplay id="vd" width="640" height="480" />
-	<Image source="{selectedPicture.url}" width="640" height="480" includeIn="photoDisplay" />
+	<mx:Image source="{selectedPicture.url}" width="640" height="480" includeIn="photoDisplay" />
 	<view:CountDownTimer id="timer" skinClass="{com.pnwrain.pictair_me.skin.CountDownTimerSkin}" horizontalCenter="0" top="380" visible="false"
 		countDownStart="timer.visible=true" countDownCancel="timer.visible=false" countDownEnd="takePicture();"  />
 
-	<ApplicationControlBar top="480" width="100%" dock="false" >
-		<Canvas width="100%" height="100%">
-			<FxButton click="pictureManager.upload(selectedPicture)" includeIn="photoDisplay" label="Upload to Twitter" verticalCenter="0" left="10" />
-			<FxButton click="timer.countDown()" click.photoDisplay="captureVideo()" skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin" height="50" width="50" horizontalCenter="0" verticalCenter="0"/>
-			<ComboBox dataProvider="{filterManager.filters}" labelField="displayName" verticalCenter="0" right="10" change="loadFilter(event)"/>
+	<mx:ApplicationControlBar top="480" width="100%" dock="false" >
+		<s:Group width="100%" height="100%">
+			<s:Button click="pictureManager.upload(selectedPicture)" includeIn="photoDisplay" label="Upload to Twitter" verticalCenter="0" left="10" />
+			<s:Button click.Base="timer.countDown()" click.photoDisplay="captureVideo()" skinClass="com.pnwrain.pictair_me.skin.CameraButtonSkin" height="50" width="50" horizontalCenter="0" verticalCenter="0"/>
+			<mx:ComboBox dataProvider="{filterManager.filters}" labelField="displayName" verticalCenter="0" right="10" change="loadFilter(event)"/>
 
-		</Canvas>
-	</ApplicationControlBar>
-	<HBox bottom="0" width="100%" height="140" horizontalGap="0">
-		<FxButton height="100%" width="20" click="slideListPosition(-1)" />
-		<HorizontalList liveScrolling="true" id="pictureList" change="displayPhoto(event)" width="100%" height="140" dataProvider="{pictureManager.pictures}" itemRenderer="com.pnwrain.pictair_me.view.ImageThumbnail" horizontalScrollPolicy="off" />
-		<FxButton height="100%" width="20" label="" click="slideListPosition(1)" />
-	</HBox>
-</WindowedApplication>
+		</s:Group>
+	</mx:ApplicationControlBar>
+	<s:Group bottom="0" width="100%" height="140" layout="{new HorizontalLayout()}">
+		<s:Button height="100%" width="20" click="slideListPosition(-1)" />
+		<mx:HorizontalList liveScrolling="true" id="pictureList" change="displayPhoto(event)" width="100%" height="140" dataProvider="{pictureManager.pictures}" itemRenderer="com.pnwrain.pictair_me.view.ImageThumbnail" horizontalScrollPolicy="off" />
+		<s:Button height="100%" width="20" label="" click="slideListPosition(1)" />
+	</s:Group>
+</s:WindowedApplication>
