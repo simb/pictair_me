@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  height="135" width="149" borderStyle="outset" horizontalScrollPolicy="off" verticalScrollPolicy="off"   >
-	<mx:Script>
+<mx:Canvas xmlns="http://ns.adobe.com/mxml/2009" 
+	xmlns:mx="library://ns.adobe.com/flex/halo" 
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	height="135" width="149" borderStyle="outset" horizontalScrollPolicy="off" verticalScrollPolicy="off"  
+	rollOver="currentState='Over'" rollOut="currentState=''">
+	<Script>
 		<![CDATA[
 			[Bindable]
 			private var title:String;
@@ -13,10 +17,17 @@
 			}
 			
 		]]>
-	</mx:Script>
-	<mx:DateFormatter id="df" formatString="MM/DD/YY L:NN A" />
-
+	</Script>
+	<mx:states>
+		<mx:State name="Base" />
+		<mx:State name="Over" />
+	</mx:states>
+	<Declarations>
+		<mx:DateFormatter id="df" formatString="MM/DD/YY L:NN A" />
+	</Declarations>
+	
+	
 	<mx:Image source="{data.url}" top="20" left="5" right="5" />
 	<mx:Label text="{title}" />
-	
+	<s:Button right="5" label="x" includeIn="Over" skinClass="com.pnwrain.pictair_me.skin.CloseButton" />
 </mx:Canvas>

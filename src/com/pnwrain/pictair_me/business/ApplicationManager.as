@@ -18,7 +18,7 @@ package com.pnwrain.pictair_me.business
 		public function ApplicationManager()
 		{
 			getVersion();
-			checkUpdate();
+			//checkUpdate();
 		}
 		
 		private function getVersion():void {
